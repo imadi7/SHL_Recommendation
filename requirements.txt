@@ -9,6 +9,9 @@ huggingface-hub==0.10.1
 pandas
 numpy
 numpy<2
+certifi>=2024.2.2
+charset-normalizer>=3.0.0
 requests
+requests>=2.31.0
 beautifulsoup4
 streamlit
