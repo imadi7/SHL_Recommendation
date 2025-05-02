@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://shl-recommender-ucpw.onrender.com/recommend"
+API_URL = "https://shl-recommendation-8119.onrender.com"
 
 st.title("SHL Assessment Recommender")
 st.markdown("Enter a job description or query, and get recommended assessments.")
