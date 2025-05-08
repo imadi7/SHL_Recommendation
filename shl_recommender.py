@@ -136,30 +136,5 @@ def startup_event():
 
 # Run locally or on Render
 if __name__ == "__main__":
-    import socket
-    from contextlib import closing
-
-    def find_free_port(start_port: int = 10000, max_attempts: int = 20):
-        """Find a free port starting from start_port"""
-        for port in range(start_port, start_port + max_attempts):
-            try:
-                with closing(socket.socket(socket.AF_INET, socket.SOCK_STREAM)) as s:
-                    s.bind(('', port))
-                    return port
-            except OSError:
-                continue
-        raise OSError(f"No free port found in range {start_port}-{start_port + max_attempts - 1}")
-
-    # Get port from environment or find a free one
-    port = int(os.environ.get("PORT", 0)) or find_free_port()
-    
-    # Configure Uvicorn with additional reliability settings
-    uvicorn.run(
-        app,
-        host="0.0.0.0",
-        port=port,
-        reload=False,  # Disable reload in production
-        timeout_keep_alive=30,
-        log_config=None,
-        access_log=True
-    )
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
